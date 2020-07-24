@@ -1,8 +1,11 @@
 from plane import Plane
 
+
 class Boeing777(Plane):
-    def get_name(self):
+    @staticmethod
+    def get_name():
         return "Boeing 777"
 
-    def get_seating_plan(self):
+    @staticmethod
+    def get_seating_plan():
         return range(1, 39), "ABCDEGHIK"
