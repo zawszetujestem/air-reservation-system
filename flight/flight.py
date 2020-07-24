@@ -15,8 +15,8 @@ class Flight:
     def get_plane(self):
         return self.airplane.get_name()
 
-    def _parse_seat(self, seat):
-        rows, letters =  self.airplane.get_seating_plan()
+    def _parse_seat(self, seat="12C"):
+        rows, letters = self.airplane.get_seating_plan()
         letter = seat[-1]
         if letter not in letters:
             raise ValueError(f"Invalid seat letter: {letter}")
@@ -54,9 +54,7 @@ class Flight:
         self.seats[from_row][from_letter] = None
 
     def num_empty_seats(self):
-        return sum(sum(1 for seat in row.values()
-                         if seat is None)
-                    for row in self.seats if row is not None)
+        return sum(sum(1 for seat in row.values() if seat is None) for row in self.seats if row is not None)
 
     def print_tickets(self, c_printer):
         for passenger, seat in self.get_passenger_list():
